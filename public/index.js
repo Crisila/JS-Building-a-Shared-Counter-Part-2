@@ -3,11 +3,28 @@ async function main(){
     const incrementButton = document.querySelector('#increment-button');
     const decrementButton = document.querySelector('#decrement-button');
 
-    const response = await fetch('http://localhost:9001/counter');
+    // const response = await fetch('http://localhost:9001/counter');
+
+    // const result = await response.json();
+    
+    // let countValue = result.value;
+
+
+// my answer
+    const response = await fetch('http://localhost:9001/counter', {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify ({
+            "value": 11
+        })
+    }
+    );
 
     const result = await response.json();
     
     let countValue = result.value;
+// end of my answer
+
 
     function increment(){
         countValue++;
